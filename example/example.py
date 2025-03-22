@@ -48,42 +48,48 @@ st.markdown(
     <style>
     [data-testid="stColumn"] {
         padding: 0px !important;
+        margin: 0px !important;
     }
     label {
-        font-size: 14px; /* Reduced label font size */
-        margin-bottom: 2px; /* Reduced margin */
+        font-size: 14px;
+        margin-bottom: 2px;
+        display: inline-block; /* Crucial for same-line layout on iPhone */
+        width: 30%; /* Adjust as needed */
+        vertical-align: middle;
     }
     input, [data-baseweb="input"], [data-baseweb="input-container"] {
-        font-size: 14px; /* Reduced input font size */
-        padding: 4px; /* Reduced padding */
-        margin-bottom: 4px; /* Reduced margin */
+        font-size: 14px;
+        padding: 4px;
+        margin-bottom: 4px;
+        width: 70%; /* Adjust as needed */
+        display: inline-block; /* Crucial for same-line layout on iPhone */
+        vertical-align: middle;
     }
     </style>
     """,
     unsafe_allow_html=True,
 )
 
-# st.title("NỘI DUNG GHI ÂM GIỌNG NÓI ĐỐI VỚI NGƯỜI BỆNH PARKINSON")
 st.header("NỘI DUNG GHI ÂM GIỌNG NÓI ĐỐI VỚI NGƯỜI BỆNH PARKINSON")
 
 st.subheader("THÔNG TIN CÁ NHÂN:")
-col1, col2 = st.columns([1, 2])  # Adjust column width ratios as needed
+col1, col2 = st.columns([1, 2])
 with col1:
     st.markdown("Họ tên:")
 with col2:
-    name = st.text_input("", key="name_input", label_visibility="collapsed") #collapse the label.
+    name = st.text_input("", key="name_input", label_visibility="collapsed")
 
 col3, col4 = st.columns([1, 2])
 with col3:
     st.markdown("Năm sinh:")
 with col4:
-    year_of_birth = st.number_input("", min_value=1900, max_value=2025, step=1, key="yob", label_visibility="collapsed") #collapse the label.
+    year_of_birth = st.number_input("", min_value=1900, max_value=2025, step=1, key="yob", label_visibility="collapsed")
 
 col5, col6 = st.columns([1, 2])
 with col5:
     st.markdown("Thời gian mắc bệnh Parkinson:")
 with col6:
-    years_parkinson = st.number_input("", min_value=0, step=1, key = "yop", label_visibility="collapsed") #collapse the label.
+    years_parkinson = st.number_input("", min_value=0, step=1, key="yop", label_visibility="collapsed")
 
 st.subheader("NỘI DUNG GHI ÂM:")
 st.write("Nội dung 1: Phát âm nguyên âm “A” dài và lâu nhất có thể (2 lần)")
