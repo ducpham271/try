@@ -9,39 +9,39 @@ from googleapiclient.http import MediaFileUpload
 
 def save_ggdrive(audio):
     if len(audio) > 0:
-    # To play audio in frontend:
-    st.audio(audio.export().read())
+        # To play audio in frontend:
+        st.audio(audio.export().read())
 
-    # To save audio to a file, use pydub export method:
-    now = datetime.datetime.now()
-    timestamp = now.strftime("%Y%m%d_%H%M%S")  # Format: YYYYMMDD_HHMMSS
-    filename = f"audio_{timestamp}.wav"
+        # To save audio to a file, use pydub export method:
+        now = datetime.datetime.now()
+        timestamp = now.strftime("%Y%m%d_%H%M%S")  # Format: YYYYMMDD_HHMMSS
+        filename = f"audio_{timestamp}.wav"
 
-    audio.export(filename, format="wav")
-    print(filename)
-    st.write(f"Frame rate: {audio.frame_rate}, Frame width: {audio.frame_width}, Duration: {audio.duration_seconds} seconds")
-    service_account_info = json.loads(st.secrets["SERVICE_ACCOUNT_JSON"])
-    
-    
-    creds = service_account.Credentials.from_service_account_info(service_account_info, scopes=['https://www.googleapis.com/auth/drive.file'])
-    # Google Drive Upload
-    drive_folder_id = st.secrets["DRIVE_FOLDER_ID"]  # Get from Streamlit secrets
+        audio.export(filename, format="wav")
+        print(filename)
+        st.write(f"Frame rate: {audio.frame_rate}, Frame width: {audio.frame_width}, Duration: {audio.duration_seconds} seconds")
+        service_account_info = json.loads(st.secrets["SERVICE_ACCOUNT_JSON"])
+        
+        
+        creds = service_account.Credentials.from_service_account_info(service_account_info, scopes=['https://www.googleapis.com/auth/drive.file'])
+        # Google Drive Upload
+        drive_folder_id = st.secrets["DRIVE_FOLDER_ID"]  # Get from Streamlit secrets
 
-    service = build('drive', 'v3', credentials=creds)
+        service = build('drive', 'v3', credentials=creds)
 
-    file_metadata = {
-        'name': filename,
-        'parents': [drive_folder_id]
-    }
+        file_metadata = {
+            'name': filename,
+            'parents': [drive_folder_id]
+        }
 
-    media = MediaFileUpload(filename, mimetype='audio/wav')
-    file = service.files().create(body=file_metadata, media_body=media, fields='id').execute()
+        media = MediaFileUpload(filename, mimetype='audio/wav')
+        file = service.files().create(body=file_metadata, media_body=media, fields='id').execute()
 
-    st.success(f"Ghi âm '{filename}' đã được lưu vào Google Drive")
-    print(f"File ID: {file.get('id')}")
+        st.success(f"Ghi âm '{filename}' đã được lưu vào Google Drive")
+        print(f"File ID: {file.get('id')}")
 
-    # Clean up the local file after upload
-    os.remove(filename)
+        # Clean up the local file after upload
+        os.remove(filename)
 
 st.title("NỘI DUNG GHI ÂM GIỌNG NÓI ĐỐI VỚI NGƯỜI BỆNH PARKINSON")
 
