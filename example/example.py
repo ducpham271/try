@@ -89,6 +89,12 @@ with col6:
     years_parkinson = st.number_input("", min_value=0, step=1, key="yod", label_visibility="collapsed")
 
 st.markdown("NỘI DUNG GHI ÂM:")
-st.write("Nội dung 1: Phát âm nguyên âm “A” dài và lâu nhất có thể (2 lần)")
+st.write("Phát âm nguyên âm “A” dài và lâu nhất có thể (lần 1)")
 audio1 = audiorecorder("Ghi âm", "Ngừng ghi âm", custom_style={"backgroundColor": "lightblue"})
 save_ggdrive(audio1, name, year_of_birth, years_parkinson)
+st.write("Phát âm nguyên âm “A” dài và lâu nhất có thể (lần 2)")
+audio2 = audiorecorder("Ghi âm", "Ngừng ghi âm", custom_style={"backgroundColor": "lightblue"})
+save_ggdrive(audio2, name, year_of_birth, years_parkinson)
+st.write("Phát âm nguyên âm “A” dài và lâu nhất có thể (lần 3)")
+audio3 = audiorecorder("Ghi âm", "Ngừng ghi âm", custom_style={"backgroundColor": "lightblue"})
+save_ggdrive(audio3, name, year_of_birth, years_parkinson)
