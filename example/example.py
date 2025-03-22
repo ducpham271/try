@@ -84,9 +84,9 @@ with col4:
 
 col5, col6 = st.columns([1, 2])
 with col5:
-    st.write("Thời gian mắc bệnh Parkinson:")
+    st.write("Thời gian mắc bệnh Parkinson (số năm):")
 with col6:
-    years_parkinson = st.number_input("", min_value=0, step=1, key="yop", label_visibility="collapsed")
+    years_parkinson = st.number_input("", min_value=0, step=1, key="yod", label_visibility="collapsed")
 
 st.markdown("NỘI DUNG GHI ÂM:")
 st.write("Nội dung 1: Phát âm nguyên âm “A” dài và lâu nhất có thể (2 lần)")
