@@ -8,40 +8,39 @@ from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
 def save_ggdrive(audio, _name, _year_of_birth, _years_parkinson):
-    if len(audio) > 0:
-        # To play audio in frontend:
-        st.audio(audio.export().read())
+    # To play audio in frontend:
+    st.audio(audio.export().read())
 
-        # To save audio to a file, use pydub export method:
-        now = datetime.datetime.now()
-        timestamp = now.strftime("%Y%m%d_%H%M%S")  # Format: YYYYMMDD_HHMMSS
-        filename = f"{_name}_{_year_of_birth}_{_years_parkinson}_{timestamp}.wav"
+    # To save audio to a file, use pydub export method:
+    now = datetime.datetime.now()
+    timestamp = now.strftime("%Y%m%d_%H%M%S")  # Format: YYYYMMDD_HHMMSS
+    filename = f"{_name}_{_year_of_birth}_{_years_parkinson}_{timestamp}.wav"
 
-        audio.export(filename, format="wav")
-        print(filename)
-        st.write(f"Frame rate: {audio.frame_rate}, Frame width: {audio.frame_width}, Duration: {audio.duration_seconds} seconds")
-        service_account_info = json.loads(st.secrets["SERVICE_ACCOUNT_JSON"])
-        
-        
-        creds = service_account.Credentials.from_service_account_info(service_account_info, scopes=['https://www.googleapis.com/auth/drive.file'])
-        # Google Drive Upload
-        drive_folder_id = st.secrets["DRIVE_FOLDER_ID"]  # Get from Streamlit secrets
+    audio.export(filename, format="wav")
+    print(filename)
+    st.write(f"Frame rate: {audio.frame_rate}, Frame width: {audio.frame_width}, Duration: {audio.duration_seconds} seconds")
+    service_account_info = json.loads(st.secrets["SERVICE_ACCOUNT_JSON"])
+    
+    
+    creds = service_account.Credentials.from_service_account_info(service_account_info, scopes=['https://www.googleapis.com/auth/drive.file'])
+    # Google Drive Upload
+    drive_folder_id = st.secrets["DRIVE_FOLDER_ID"]  # Get from Streamlit secrets
 
-        service = build('drive', 'v3', credentials=creds)
+    service = build('drive', 'v3', credentials=creds)
 
-        file_metadata = {
-            'name': filename,
-            'parents': [drive_folder_id]
-        }
+    file_metadata = {
+        'name': filename,
+        'parents': [drive_folder_id]
+    }
 
-        media = MediaFileUpload(filename, mimetype='audio/wav')
-        file = service.files().create(body=file_metadata, media_body=media, fields='id').execute()
+    media = MediaFileUpload(filename, mimetype='audio/wav')
+    file = service.files().create(body=file_metadata, media_body=media, fields='id').execute()
 
-        st.success(f"Ghi âm '{filename}' đã được lưu vào Google Drive")
-        print(f"File ID: {file.get('id')}")
+    st.success(f"Ghi âm '{filename}' đã được lưu vào Google Drive")
+    print(f"File ID: {file.get('id')}")
 
-        # Clean up the local file after upload
-        os.remove(filename)
+    # Clean up the local file after upload
+    os.remove(filename)
 
 st.markdown(
     """
@@ -91,10 +90,13 @@ with col6:
 st.markdown("NỘI DUNG GHI ÂM:")
 st.write("Phát âm nguyên âm “A” dài và lâu nhất có thể (lần 1)")
 audio1 = audiorecorder("Ghi âm", "Ngừng ghi âm", custom_style={"backgroundColor": "lightblue"})
-save_ggdrive(audio1, name, year_of_birth, years_parkinson)
+if len(audio1) > 0:
+    save_ggdrive(audio1, name, year_of_birth, years_parkinson)
 st.write("Phát âm nguyên âm “A” dài và lâu nhất có thể (lần 2)")
 audio2 = audiorecorder("Ghi âm", "Ngừng ghi âm", custom_style={"backgroundColor": "lightblue"})
-save_ggdrive(audio2, name, year_of_birth, years_parkinson)
+if len(audio2) > 0:
+    save_ggdrive(audio2, name, year_of_birth, years_parkinson)
 st.write("Phát âm nguyên âm “A” dài và lâu nhất có thể (lần 3)")
 audio3 = audiorecorder("Ghi âm", "Ngừng ghi âm", custom_style={"backgroundColor": "lightblue"})
-save_ggdrive(audio3, name, year_of_birth, years_parkinson)
+if len(audio3) > 0:
+    save_ggdrive(audio3, name, year_of_birth, years_parkinson)
