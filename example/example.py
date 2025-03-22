@@ -46,6 +46,9 @@ def save_ggdrive(audio):
 st.markdown(
     """
     <style>
+    h1 {
+        font-size: 24px;  /* Adjust the size here */
+    }
     [data-testid="stColumn"] {
         padding: 0px !important;
     }
@@ -65,7 +68,7 @@ st.markdown(
 
 st.header("NỘI DUNG GHI ÂM GIỌNG NÓI ĐỐI VỚI NGƯỜI BỆNH PARKINSON")
 
-st.subheader("THÔNG TIN CÁ NHÂN:")
+st.markdown("THÔNG TIN CÁ NHÂN:")
 col1, col2 = st.columns([1, 2])
 with col1:
     st.markdown("Họ tên:")
