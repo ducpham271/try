@@ -7,7 +7,7 @@ import os
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
-def save_ggdrive(audio):
+def save_ggdrive(audio, _name, _year_of_birth, _years_parkinson):
     if len(audio) > 0:
         # To play audio in frontend:
         st.audio(audio.export().read())
@@ -15,7 +15,7 @@ def save_ggdrive(audio):
         # To save audio to a file, use pydub export method:
         now = datetime.datetime.now()
         timestamp = now.strftime("%Y%m%d_%H%M%S")  # Format: YYYYMMDD_HHMMSS
-        filename = f"audio_{timestamp}.wav"
+        filename = f"{_name}_{_year_of_birth}_{_years_parkinson} năm_{timestamp}.wav"
 
         audio.export(filename, format="wav")
         print(filename)
@@ -91,4 +91,4 @@ with col6:
 st.markdown("NỘI DUNG GHI ÂM:")
 st.write("Nội dung 1: Phát âm nguyên âm “A” dài và lâu nhất có thể (2 lần)")
 audio1 = audiorecorder("Ghi âm", "Ngừng ghi âm", "Tạm ngưng", custom_style={"backgroundColor": "lightblue"})
-save_ggdrive(audio1)
+save_ggdrive(audio1, name, year_of_birth, years_parkinson)
