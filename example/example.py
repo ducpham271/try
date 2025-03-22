@@ -80,7 +80,7 @@ with col4:
 
 col5, col6 = st.columns([1, 2])
 with col5:
-    st.markdown("Thời gian mắc bệnh Parkinson:")
+    st.markdown("Thời gian mắc bệnh \n Parkinson:")
 with col6:
     years_parkinson = st.number_input("", min_value=0, step=1, key="yop", label_visibility="collapsed")
 
