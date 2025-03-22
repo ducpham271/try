@@ -43,6 +43,26 @@ def save_ggdrive(audio):
         # Clean up the local file after upload
         os.remove(filename)
 
+st.markdown(
+    """
+    <style>
+    [data-testid="stColumn"] {
+        padding: 0px !important;
+    }
+    label {
+        font-size: 14px; /* Reduced label font size */
+        margin-bottom: 2px; /* Reduced margin */
+    }
+    input, [data-baseweb="input"], [data-baseweb="input-container"] {
+        font-size: 14px; /* Reduced input font size */
+        padding: 4px; /* Reduced padding */
+        margin-bottom: 4px; /* Reduced margin */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 # st.title("NỘI DUNG GHI ÂM GIỌNG NÓI ĐỐI VỚI NGƯỜI BỆNH PARKINSON")
 st.header("NỘI DUNG GHI ÂM GIỌNG NÓI ĐỐI VỚI NGƯỜI BỆNH PARKINSON")
 
