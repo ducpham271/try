@@ -47,19 +47,19 @@ def save_ggdrive(audio):
 st.header("NỘI DUNG GHI ÂM GIỌNG NÓI ĐỐI VỚI NGƯỜI BỆNH PARKINSON")
 
 st.subheader("THÔNG TIN CÁ NHÂN:")
-col1, col2 = st.columns([1, 3])  # Adjust column width ratios as needed
+col1, col2 = st.columns([1, 2])  # Adjust column width ratios as needed
 with col1:
     st.markdown("Họ tên:")
 with col2:
     name = st.text_input("", key="name_input", label_visibility="collapsed") #collapse the label.
 
-col3, col4 = st.columns([1, 3])
+col3, col4 = st.columns([1, 2])
 with col3:
     st.markdown("Năm sinh:")
 with col4:
     year_of_birth = st.number_input("", min_value=1900, max_value=2025, step=1, key="yob", label_visibility="collapsed") #collapse the label.
 
-col5, col6 = st.columns([1, 3])
+col5, col6 = st.columns([1, 2])
 with col5:
     st.markdown("Thời gian mắc bệnh Parkinson:")
 with col6:
