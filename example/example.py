@@ -43,6 +43,49 @@ def save_ggdrive(audio):
         # Clean up the local file after upload
         os.remove(filename)
 
+# st.markdown(
+#     """
+#     <style>
+#     [data-testid="stColumn"] {
+#         padding: 0px !important;
+#     }
+#     label {
+#         font-size: 14px; /* Reduced label font size */
+#         margin-bottom: 2px; /* Reduced margin */
+#     }
+#     input, [data-baseweb="input"], [data-baseweb="input-container"] {
+#         font-size: 14px; /* Reduced input font size */
+#         padding: 4px; /* Reduced padding */
+#         margin-bottom: 4px; /* Reduced margin */
+#     }
+#     </style>
+#     """,
+#     unsafe_allow_html=True,
+# )
+
+# st.header("NỘI DUNG GHI ÂM GIỌNG NÓI ĐỐI VỚI NGƯỜI BỆNH PARKINSON")
+
+# st.subheader("THÔNG TIN CÁ NHÂN:")
+# col1, col2 = st.columns([1, 2])
+# with col1:
+#     st.markdown("Họ tên:")
+# with col2:
+#     name = st.text_input("", key="name_input", label_visibility="collapsed")
+
+# col3, col4 = st.columns([1, 2])
+# with col3:
+#     st.markdown("Năm sinh:")
+# with col4:
+#     year_of_birth = st.number_input("", min_value=1900, max_value=2025, step=1, key="yob", label_visibility="collapsed")
+
+# col5, col6 = st.columns([1, 2])
+# with col5:
+#     st.markdown("Thời gian mắc bệnh Parkinson:")
+# with col6:
+#     years_parkinson = st.number_input("", min_value=0, step=1, key="yop", label_visibility="collapsed")
+
+# import streamlit as st
+
 st.markdown(
     """
     <style>
@@ -50,13 +93,15 @@ st.markdown(
         padding: 0px !important;
     }
     label {
-        font-size: 14px; /* Reduced label font size */
-        margin-bottom: 2px; /* Reduced margin */
+        font-size: 14px;
+        margin-bottom: 2px;
     }
     input, [data-baseweb="input"], [data-baseweb="input-container"] {
-        font-size: 14px; /* Reduced input font size */
-        padding: 4px; /* Reduced padding */
-        margin-bottom: 4px; /* Reduced margin */
+        font-size: 14px;
+        padding: 4px;
+        margin-bottom: 4px;
+        width: 100%; /* Ensure input takes 100% of the column */
+        max-width: 300px; /* Limit the maximum width of the textbox */
     }
     </style>
     """,
@@ -66,6 +111,8 @@ st.markdown(
 st.header("NỘI DUNG GHI ÂM GIỌNG NÓI ĐỐI VỚI NGƯỜI BỆNH PARKINSON")
 
 st.subheader("THÔNG TIN CÁ NHÂN:")
+
+# Adjust column widths to make textboxes narrower
 col1, col2 = st.columns([1, 2])
 with col1:
     st.markdown("Họ tên:")
