@@ -7,12 +7,46 @@ import os
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
-# def replace_micro_sign(input_string):
-#     return input_string.replace('\xb5', 'µ')  # \xb5 is the Latin-1 micro sign
-# def remove_micro_sign(input_string):
-#     return input_string.replace('\xb5', '')
-st.title("Audio Recorder")
-audio = audiorecorder("Click to record", "Click to stop recording", custom_style={"backgroundColor": "lightblue"})
+st.title("Ghi âm giọng nói")
+
+# Input Name
+name = st.text_input("Name:")
+
+# Input Year of Birth
+current_year = datetime.datetime.now().year
+year_of_birth = st.number_input("Year of Birth:", min_value=1900, max_value=current_year, step=1)
+
+# Input Number of Years with Parkinson's
+years_with_parkinson = st.number_input("Number of Years with Parkinson's:", min_value=0, step=1)
+
+# Display the information (optional)
+if name and year_of_birth is not None and years_with_parkinson is not None: #check if all fields are filled.
+    age = current_year - year_of_birth
+    st.write(f"Name: {name}")
+    st.write(f"Age: {age}")
+    st.write(f"Years with Parkinson's: {years_with_parkinson}")
+elif name or year_of_birth is not None or years_with_parkinson is not None:
+    st.warning("Please fill out all fields.")
+
+# Example with collapsed labels:
+
+st.subheader("Collapsed Labels Example")
+
+name_collapsed = st.text_input("Name:", label_visibility = "collapsed", placeholder = "Enter your name")
+year_collapsed = st.number_input("Year of Birth:", min_value=1900, max_value=current_year, step=1, label_visibility = "collapsed", placeholder = "Enter your birth year")
+years_collapsed = st.number_input("Years with Parkinson's:", min_value=0, step=1, label_visibility = "collapsed", placeholder = "Enter years with Parkinson's")
+
+
+if name_collapsed and year_collapsed is not None and years_collapsed is not None:
+    age_collapsed = current_year - year_collapsed
+    st.write(f"Name: {name_collapsed}")
+    st.write(f"Age: {age_collapsed}")
+    st.write(f"Years with Parkinson's: {years_collapsed}")
+elif name_collapsed or year_collapsed is not None or years_collapsed is not None:
+    st.warning("Please fill out all fields.")
+
+
+audio = audiorecorder("Ghi âm", "Ngừng ghi âm", "Tạm ngưng", custom_style={"backgroundColor": "lightblue"})
 
 if len(audio) > 0:
     # To play audio in frontend:
@@ -26,9 +60,7 @@ if len(audio) > 0:
     audio.export(filename, format="wav")
     print(filename)
     st.write(f"Frame rate: {audio.frame_rate}, Frame width: {audio.frame_width}, Duration: {audio.duration_seconds} seconds")
-    my_string = st.secrets["SERVICE_ACCOUNT_JSON"]
-    # cleaned_string = replace_micro_sign(my_string)
-    service_account_info = json.loads(my_string)
+    service_account_info = json.loads(st.secrets["SERVICE_ACCOUNT_JSON"])
     
     
     creds = service_account.Credentials.from_service_account_info(service_account_info, scopes=['https://www.googleapis.com/auth/drive.file'])
@@ -45,7 +77,7 @@ if len(audio) > 0:
     media = MediaFileUpload(filename, mimetype='audio/wav')
     file = service.files().create(body=file_metadata, media_body=media, fields='id').execute()
 
-    st.success(f"File '{filename}' uploaded to Google Drive folder with ID: {drive_folder_id}")
+    st.success(f"Ghi âm '{filename}' đã được lưu vào Google Drive")
     print(f"File ID: {file.get('id')}")
 
     # Clean up the local file after upload
