@@ -15,7 +15,7 @@ def save_ggdrive(audio, _name, _year_of_birth, _years_parkinson):
         # To save audio to a file, use pydub export method:
         now = datetime.datetime.now()
         timestamp = now.strftime("%Y%m%d_%H%M%S")  # Format: YYYYMMDD_HHMMSS
-        filename = f"{_name}_{_year_of_birth}_{_years_parkinson} năm_{timestamp}.wav"
+        filename = f"{_name}_{_year_of_birth}_{_years_parkinson}_{timestamp}.wav"
 
         audio.export(filename, format="wav")
         print(filename)
