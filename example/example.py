@@ -43,9 +43,10 @@ def save_ggdrive(audio):
         # Clean up the local file after upload
         os.remove(filename)
 
-st.title("Ghi âm giọng nói người bệnh Parkinson")
+# st.title("NỘI DUNG GHI ÂM GIỌNG NÓI ĐỐI VỚI NGƯỜI BỆNH PARKINSON")
+st.header("NỘI DUNG GHI ÂM GIỌNG NÓI ĐỐI VỚI NGƯỜI BỆNH PARKINSON")
 
-st.write("Thông tin cá nhân:")
+st.subheader("THÔNG TIN CÁ NHÂN:")
 col1, col2 = st.columns([1, 3])  # Adjust column width ratios as needed
 with col1:
     st.markdown("Họ tên:")
@@ -64,7 +65,7 @@ with col5:
 with col6:
     years_parkinson = st.number_input("", min_value=0, step=1, key = "yop", label_visibility="collapsed") #collapse the label.
 
-st.write("Nội dung ghi âm:")
+st.subheader("NỘI DUNG GHI ÂM:")
 st.write("Nội dung 1: Phát âm nguyên âm “A” dài và lâu nhất có thể (2 lần)")
 audio1 = audiorecorder("Ghi âm", "Ngừng ghi âm", "Tạm ngưng", custom_style={"backgroundColor": "lightblue"})
 save_ggdrive(audio1)
