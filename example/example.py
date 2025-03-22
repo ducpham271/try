@@ -48,22 +48,15 @@ st.markdown(
     <style>
     [data-testid="stColumn"] {
         padding: 0px !important;
-        margin: 0px !important;
     }
     label {
-        font-size: 14px;
-        margin-bottom: 2px;
-        display: inline-block; /* Crucial for same-line layout on iPhone */
-        width: 30%; /* Adjust as needed */
-        vertical-align: middle;
+        font-size: 14px; /* Reduced label font size */
+        margin-bottom: 2px; /* Reduced margin */
     }
     input, [data-baseweb="input"], [data-baseweb="input-container"] {
-        font-size: 14px;
-        padding: 4px;
-        margin-bottom: 4px;
-        width: 70%; /* Adjust as needed */
-        display: inline-block; /* Crucial for same-line layout on iPhone */
-        vertical-align: middle;
+        font-size: 14px; /* Reduced input font size */
+        padding: 4px; /* Reduced padding */
+        margin-bottom: 4px; /* Reduced margin */
     }
     </style>
     """,
