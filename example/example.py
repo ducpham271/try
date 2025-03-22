@@ -90,5 +90,5 @@ with col6:
 
 st.markdown("NỘI DUNG GHI ÂM:")
 st.write("Nội dung 1: Phát âm nguyên âm “A” dài và lâu nhất có thể (2 lần)")
-audio1 = audiorecorder("Ghi âm", "Ngừng ghi âm", "Tạm ngưng", custom_style={"backgroundColor": "lightblue"})
+audio1 = audiorecorder("Ghi âm", "Ngừng ghi âm", custom_style={"backgroundColor": "lightblue"})
 save_ggdrive(audio1, name, year_of_birth, years_parkinson)
