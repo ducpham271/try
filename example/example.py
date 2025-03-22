@@ -66,28 +66,29 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-st.header("NỘI DUNG GHI ÂM GIỌNG NÓI ĐỐI VỚI NGƯỜI BỆNH PARKINSON")
+st.subheader("NỘI DUNG GHI ÂM GIỌNG NÓI ĐỐI VỚI NGƯỜI BỆNH PARKINSON")
 
 st.markdown("THÔNG TIN CÁ NHÂN:")
+
 col1, col2 = st.columns([1, 2])
 with col1:
-    st.markdown("Họ tên:")
+    st.write("Họ tên:")
 with col2:
     name = st.text_input("", key="name_input", label_visibility="collapsed")
 
 col3, col4 = st.columns([1, 2])
 with col3:
-    st.markdown("Năm sinh:")
+    st.write("Năm sinh:")
 with col4:
     year_of_birth = st.number_input("", min_value=1900, max_value=2025, step=1, key="yob", label_visibility="collapsed")
 
 col5, col6 = st.columns([1, 2])
 with col5:
-    st.markdown("Thời gian mắc bệnh \n Parkinson:")
+    st.write("Thời gian mắc bệnh Parkinson:")
 with col6:
     years_parkinson = st.number_input("", min_value=0, step=1, key="yop", label_visibility="collapsed")
 
-st.subheader("NỘI DUNG GHI ÂM:")
+st.markdown("NỘI DUNG GHI ÂM:")
 st.write("Nội dung 1: Phát âm nguyên âm “A” dài và lâu nhất có thể (2 lần)")
 audio1 = audiorecorder("Ghi âm", "Ngừng ghi âm", "Tạm ngưng", custom_style={"backgroundColor": "lightblue"})
 save_ggdrive(audio1)
