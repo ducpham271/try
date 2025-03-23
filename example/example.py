@@ -7,19 +7,20 @@ import os
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 from PIL import Image
+import pytz
 
 service_account_info = json.loads(st.secrets["SERVICE_ACCOUNT_JSON"])
 creds = service_account.Credentials.from_service_account_info(service_account_info, scopes=['https://www.googleapis.com/auth/drive.file'])
 drive_folder_id = st.secrets["DRIVE_FOLDER_ID"]  # Get from Streamlit secrets
 service = build('drive', 'v3', credentials=creds)
+vietnam_timezone = pytz.timezone('Asia/Ho_Chi_Minh')
 
 def save_ggdrive(audio, _name, _year_of_birth, _years_parkinson):
-    # To play audio in frontend:
     st.audio(audio.export().read())
-
-    # To save audio to a file, use pydub export method:
-    now = datetime.datetime.now()
-    timestamp = now.strftime("%Y%m%d_%H%M%S")  # Format: YYYYMMDD_HHMMSS
+    
+    utc_now = datetime.datetime.now().replace(tzinfo=pytz.utc)
+    vietnam_now = utc_now.astimezone(vietnam_timezone)
+    timestamp = vietnam_now.strftime("%Y%m%d_%H%M%S")  # Format: YYYYMMDD_HHMMSS
     filename = f"{_name}_{_year_of_birth}_{_years_parkinson}_{timestamp}.wav"
 
     audio.export(filename, format="wav")
