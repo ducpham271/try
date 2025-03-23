@@ -90,7 +90,7 @@ with col3:
     st.write("Năm sinh:")
 with col4:
     # year_of_birth = st.number_input("", value=st.session_state["yob"], min_value=1900, max_value=2025, step=1, key="yob", label_visibility="collapsed")
-    year_of_birth = st.number_input("", min_value=1900, max_value=2025, step=1, key="yob", label_visibility="collapsed")
+    year_of_birth = st.number_input("", value=1960, min_value=1900, max_value=2025, step=1, key="yob", label_visibility="collapsed")
 
 col5, col6 = st.columns([1, 2])
 with col5:
