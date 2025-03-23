@@ -85,7 +85,7 @@ with col5:
     st.write("Số năm mắc bệnh Parkinson:")
 with col6:
     years_parkinson = st.number_input("", min_value=0, step=1, key="yod", label_visibility="collapsed")
-
+st.markdown("---")
 st.markdown("NỘI DUNG GHI ÂM:")
 st.write("1. Phát âm nguyên âm “A” dài và lâu nhất có thể (lần 1)")
 audio1 = audiorecorder("Ghi âm", "Ngừng ghi âm", custom_style={"backgroundColor": "lightblue"}, key="ghiam1")
@@ -99,5 +99,7 @@ st.write("3. Phát âm nguyên âm “A” dài và lâu nhất có thể (lần
 audio3 = audiorecorder("Ghi âm", "Ngừng ghi âm", custom_style={"backgroundColor": "lightblue"}, key="ghiam3")
 if len(audio3) > 0:
     save_ggdrive(audio3, name, year_of_birth, years_parkinson)
-
-st.write("Lời cảm ơn: Xin cảm ơn Cộng Đồng PARKINTON VIỆT NAM, đặc biệt là anh admin Tung Mix vì đã hỗ trợ em thực hiện đồ án này")
+st.write("")
+st.markdown("---")
+st.write("")
+st.write("Lời cảm ơn: Xin cảm ơn Cộng Đồng PARKINTON VIỆT NAM, đặc biệt là anh admin Tung Mix vì đã hỗ trợ em thực hiện đồ án này!")
