@@ -6,6 +6,12 @@ from google.oauth2 import service_account
 import os
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
+from PIL import Image
+
+service_account_info = json.loads(st.secrets["SERVICE_ACCOUNT_JSON"])
+creds = service_account.Credentials.from_service_account_info(service_account_info, scopes=['https://www.googleapis.com/auth/drive.file'])
+drive_folder_id = st.secrets["DRIVE_FOLDER_ID"]  # Get from Streamlit secrets
+service = build('drive', 'v3', credentials=creds)
 
 def save_ggdrive(audio, _name, _year_of_birth, _years_parkinson):
     # To play audio in frontend:
@@ -19,14 +25,6 @@ def save_ggdrive(audio, _name, _year_of_birth, _years_parkinson):
     audio.export(filename, format="wav")
     print(filename)
     st.write(f"Frame rate: {audio.frame_rate}, Frame width: {audio.frame_width}, Duration: {audio.duration_seconds} seconds")
-    service_account_info = json.loads(st.secrets["SERVICE_ACCOUNT_JSON"])
-    
-    
-    creds = service_account.Credentials.from_service_account_info(service_account_info, scopes=['https://www.googleapis.com/auth/drive.file'])
-    # Google Drive Upload
-    drive_folder_id = st.secrets["DRIVE_FOLDER_ID"]  # Get from Streamlit secrets
-
-    service = build('drive', 'v3', credentials=creds)
 
     file_metadata = {
         'name': filename,
@@ -35,10 +33,8 @@ def save_ggdrive(audio, _name, _year_of_birth, _years_parkinson):
 
     media = MediaFileUpload(filename, mimetype='audio/wav')
     file = service.files().create(body=file_metadata, media_body=media, fields='id').execute()
-
     st.success(f"Ghi âm '{filename}' đã được lưu vào Google Drive")
     print(f"File ID: {file.get('id')}")
-
     # Clean up the local file after upload
     os.remove(filename)
 
@@ -64,6 +60,9 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
+logo = Image.open("../images/logo.png")
+st.image(logo, width=200)
 
 st.subheader("NỘI DUNG GHI ÂM GIỌNG NÓI ĐỐI VỚI NGƯỜI BỆNH PARKINSON")
 
@@ -100,3 +99,5 @@ st.write("3. Phát âm nguyên âm “A” dài và lâu nhất có thể (lần
 audio3 = audiorecorder("Ghi âm", "Ngừng ghi âm", custom_style={"backgroundColor": "lightblue"}, key="ghiam3")
 if len(audio3) > 0:
     save_ggdrive(audio3, name, year_of_birth, years_parkinson)
+
+st.write("Lời cảm ơn: Xin cảm ơn Cộng Đồng PARKINTON VIỆT NAM, đặc biệt là anh admin Tung Mix vì đã hỗ trợ em thực hiện đồ án này")
