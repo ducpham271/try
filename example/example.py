@@ -63,9 +63,11 @@ st.markdown(
 )
 
 logo = Image.open("logo.png")
-st.image(logo, width=100)
-
-st.subheader("NỘI DUNG GHI ÂM GIỌNG NÓI ĐỐI VỚI NGƯỜI BỆNH PARKINSON")
+col1a, col2a = st.columns([1, 4])  # Điều chỉnh tỷ lệ cột tùy ý
+with col1a:
+    st.image(logo, width=100)
+with col2a:
+    st.subheader("NỘI DUNG GHI ÂM GIỌNG NÓI ĐỐI VỚI NGƯỜI BỆNH PARKINSON")
 
 st.markdown("THÔNG TIN CÁ NHÂN:")
 
