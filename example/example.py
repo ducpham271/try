@@ -97,7 +97,7 @@ with col5:
     st.write("Số năm mắc bệnh Parkinson:")
 with col6:
     # years_parkinson = st.number_input("", value=st.session_state["yod"], min_value=0, step=1, key="yod", label_visibility="collapsed")
-    years_parkinson = st.number_input("", min_value=0, step=1, key="yod", label_visibility="collapsed")
+    years_parkinson = st.number_input("", min_value=1, step=1, key="yod", label_visibility="collapsed")
 st.markdown("---")
 st.markdown("NỘI DUNG GHI ÂM:")
 st.write("1. Phát âm nguyên âm “A” dài và lâu nhất có thể (lần 1)")
