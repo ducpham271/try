@@ -61,7 +61,8 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-logo = Image.open("/images/logo.png")
+logo_path = os.path.join("..", "images", "logo.png")
+logo = Image.open(logo_path)
 st.image(logo, width=200)
 
 st.subheader("NỘI DUNG GHI ÂM GIỌNG NÓI ĐỐI VỚI NGƯỜI BỆNH PARKINSON")
