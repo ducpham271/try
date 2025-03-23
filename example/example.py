@@ -62,7 +62,7 @@ st.markdown(
 )
 
 logo = Image.open("logo.png")
-st.image(logo, width=200)
+st.image(logo, width=100)
 
 st.subheader("NỘI DUNG GHI ÂM GIỌNG NÓI ĐỐI VỚI NGƯỜI BỆNH PARKINSON")
 
