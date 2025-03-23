@@ -88,13 +88,13 @@ col3, col4 = st.columns([1, 2])
 with col3:
     st.write("Năm sinh:")
 with col4:
-    year_of_birth = st.number_input("", st.session_state["yob"], min_value=1900, max_value=2025, step=1, key="yob", label_visibility="collapsed")
+    year_of_birth = st.number_input("", value=st.session_state["yob"], min_value=1900, max_value=2025, step=1, key="yob", label_visibility="collapsed")
 
 col5, col6 = st.columns([1, 2])
 with col5:
     st.write("Số năm mắc bệnh Parkinson:")
 with col6:
-    years_parkinson = st.number_input("", st.session_state["yod"], min_value=0, step=1, key="yod", label_visibility="collapsed")
+    years_parkinson = st.number_input("", value=st.session_state["yod"], min_value=0, step=1, key="yod", label_visibility="collapsed")
 st.markdown("---")
 st.markdown("NỘI DUNG GHI ÂM:")
 st.write("1. Phát âm nguyên âm “A” dài và lâu nhất có thể (lần 1)")
