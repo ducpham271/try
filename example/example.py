@@ -40,6 +40,7 @@ def save_ggdrive(audio, _name, _year_of_birth, _years_parkinson):
 
 st.markdown(
     """
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
     h1 {
         font-size: 24px;  /* Adjust the size here */
