@@ -89,7 +89,7 @@ col7, col8 = st.columns([1, 2])
 with col7:
     st.write("Giới tính:")
 with col8:
-    gender = st.radio('', ['Nam', 'Nữ'])
+    gender = st.radio('', ['Nam', 'Nữ'], label_visibility="collapsed")
 
 col3, col4 = st.columns([1, 2])
 with col3:
