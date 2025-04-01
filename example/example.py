@@ -107,11 +107,11 @@ st.markdown("NỘI DUNG GHI ÂM:")
 st.write("1. Phát âm nguyên âm “A” dài và lâu nhất có thể (lần 1)")
 audio1 = audiorecorder("Ghi âm", "Ngừng ghi âm", custom_style={"backgroundColor": "lightblue"}, key="ghiam1")
 if len(audio1) > 0:
-    save_ggdrive(audio1, name, year_of_birth, years_parkinson)
+    save_ggdrive(audio1, name, gender, year_of_birth, years_parkinson)
 st.write("2. Phát âm nguyên âm “A” dài và lâu nhất có thể (lần 2)")
 audio2 = audiorecorder("Ghi âm", "Ngừng ghi âm", custom_style={"backgroundColor": "lightblue"}, key="ghiam2")
 if len(audio2) > 0:
-    save_ggdrive(audio2, name, year_of_birth, years_parkinson)
+    save_ggdrive(audio2, name, gender, year_of_birth, years_parkinson)
 st.write("3. Phát âm nguyên âm “A” dài và lâu nhất có thể (lần 3)")
 audio3 = audiorecorder("Ghi âm", "Ngừng ghi âm", custom_style={"backgroundColor": "lightblue"}, key="ghiam3")
 if len(audio3) > 0:
