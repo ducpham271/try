@@ -15,13 +15,13 @@ drive_folder_id = st.secrets["DRIVE_FOLDER_ID"]  # Get from Streamlit secrets
 service = build('drive', 'v3', credentials=creds)
 vietnam_timezone = pytz.timezone('Asia/Ho_Chi_Minh')
 
-def save_ggdrive(audio, _name, _year_of_birth, _years_parkinson):
+def save_ggdrive(audio, _name, _gender, _year_of_birth, _years_parkinson):
     st.audio(audio.export().read())
     
     utc_now = datetime.datetime.now().replace(tzinfo=pytz.utc)
     vietnam_now = utc_now.astimezone(vietnam_timezone)
     timestamp = vietnam_now.strftime("%Y%m%d_%H%M%S")  # Format: YYYYMMDD_HHMMSS
-    filename = f"{_name}_{_year_of_birth}_{_years_parkinson}_{timestamp}.wav"
+    filename = f"{_name}_{_gender}_{_year_of_birth}_{_years_parkinson}_{timestamp}.wav"
 
     audio.export(filename, format="wav")
     print(filename)
@@ -115,7 +115,7 @@ if len(audio2) > 0:
 st.write("3. Phát âm nguyên âm “A” dài và lâu nhất có thể (lần 3)")
 audio3 = audiorecorder("Ghi âm", "Ngừng ghi âm", custom_style={"backgroundColor": "lightblue"}, key="ghiam3")
 if len(audio3) > 0:
-    save_ggdrive(audio3, name, year_of_birth, years_parkinson)
+    save_ggdrive(audio3, name, gender, year_of_birth, years_parkinson)
 st.write("")
 st.markdown("---")
 st.write("")
