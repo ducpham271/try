@@ -83,21 +83,24 @@ col1, col2 = st.columns([1, 2])
 with col1:
     st.write("Họ tên:")
 with col2:
-    # name = st.text_input("", st.session_state["name"], key="name_input", label_visibility="collapsed")
     name = st.text_input("", key="name_input", label_visibility="collapsed")
+
+col7, col8 = st.columns([1, 2])
+with col7:
+    st.write("Giới tính:")
+with col8:
+    gender = st.radio('', ['Nam', 'Nữ'])
 
 col3, col4 = st.columns([1, 2])
 with col3:
     st.write("Năm sinh:")
 with col4:
-    # year_of_birth = st.number_input("", value=st.session_state["yob"], min_value=1900, max_value=2025, step=1, key="yob", label_visibility="collapsed")
     year_of_birth = st.number_input("", value=1960, min_value=1900, max_value=2025, step=1, key="yob", label_visibility="collapsed")
 
 col5, col6 = st.columns([1, 2])
 with col5:
     st.write("Số năm mắc bệnh Parkinson:")
 with col6:
-    # years_parkinson = st.number_input("", value=st.session_state["yod"], min_value=0, step=1, key="yod", label_visibility="collapsed")
     years_parkinson = st.number_input("", min_value=1, step=1, key="yod", label_visibility="collapsed")
 st.markdown("---")
 st.markdown("NỘI DUNG GHI ÂM:")
