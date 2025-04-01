@@ -58,6 +58,10 @@ st.markdown(
         padding: 4px; /* Reduced padding */
         margin-bottom: 4px; /* Reduced margin */
     }
+    .stRadio > label {
+        display: inline-block;
+        margin-right: 20px;
+    }
     </style>
     """,
     unsafe_allow_html=True,
