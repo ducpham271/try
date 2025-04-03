@@ -103,7 +103,7 @@ with col4:
 
 col5, col6 = st.columns([1, 2])
 with col5:
-    st.write("Số năm mắc bệnh Parkinson:")
+    st.write("Số năm bị bệnh Parkinson:")
 with col6:
     years_parkinson = st.number_input("Số năm mắc bệnh Parkinson", min_value=1, step=1, key="yod", label_visibility="collapsed")
 st.markdown("---")
