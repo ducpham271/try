@@ -110,7 +110,7 @@ st.markdown("---")
 st.markdown("NỘI DUNG GHI ÂM:")
 st.write("Mẫu ghi âm như sau (phát âm nguyên âm “A” thật to, dài và lâu nhất có thể, vd Aaaa..., chú ý không thêm dấu vào như Áááá...):")
 # Mở file âm thanh
-audio_file = open('audio_file.wav', 'rb')
+audio_file = open('Aaaa_sample.wav', 'rb')
 # Hiển thị audio player
 st.audio(audio_file, format='audio/wav')
 st.write("1. Hít nhẹ và phát âm nguyên âm “A” thật to, dài và lâu nhất có thể, vd Aaaa..., chú ý không thêm dấu vào như Áááá... (lần 1)")
