@@ -70,22 +70,6 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# hide_streamlit_style = """
-#     <style>
-#         #MainMenu {visibility: hidden;}
-#         footer {visibility: hidden;}
-#         header {visibility: hidden;}
-#     </style>
-# """
-# st.markdown(hide_streamlit_style, unsafe_allow_html=True)
-
-# if "name" not in st.session_state:
-#     st.session_state["name"] = ""
-# if "yob" not in st.session_state:
-#     st.session_state["yob"] = ""
-# if "yod" not in st.session_state:
-#     st.session_state["yod"] = ""
-
 logo = Image.open("logo.png")
 col1a, col2a = st.columns([1, 4])  # Điều chỉnh tỷ lệ cột tùy ý
 with col1a:
