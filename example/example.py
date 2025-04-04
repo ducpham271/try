@@ -47,25 +47,37 @@ st.markdown(
     """
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
-    h1 {
-        font-size: 24px;  /* Adjust the size here */
-    }
-    [data-testid="stColumn"] {
-        padding: 0px !important;
-    }
-    label {
-        font-size: 14px; /* Reduced label font size */
-        margin-bottom: 2px; /* Reduced margin */
-    }
-    input, [data-baseweb="input"], [data-baseweb="input-container"] {
-        font-size: 14px; /* Reduced input font size */
-        padding: 4px; /* Reduced padding */
-        margin-bottom: 4px; /* Reduced margin */
-    }
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+        header {visibility: hidden;}
+        h1 {
+            font-size: 24px;  /* Adjust the size here */
+        }
+        [data-testid="stColumn"] {
+            padding: 0px !important;
+        }
+        label {
+            font-size: 14px; /* Reduced label font size */
+            margin-bottom: 2px; /* Reduced margin */
+        }
+        input, [data-baseweb="input"], [data-baseweb="input-container"] {
+            font-size: 14px; /* Reduced input font size */
+            padding: 4px; /* Reduced padding */
+            margin-bottom: 4px; /* Reduced margin */
+        }
     </style>
     """,
     unsafe_allow_html=True,
 )
+
+# hide_streamlit_style = """
+#     <style>
+#         #MainMenu {visibility: hidden;}
+#         footer {visibility: hidden;}
+#         header {visibility: hidden;}
+#     </style>
+# """
+# st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 # if "name" not in st.session_state:
 #     st.session_state["name"] = ""
