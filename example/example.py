@@ -77,7 +77,10 @@ with col1a:
     st.image(logo, width=100)
 with col2a:
     st.subheader("NỘI DUNG GHI ÂM GIỌNG NÓI ĐỐI VỚI NGƯỜI BỆNH PARKINSON")
-
+st.write("""
+         Mục đích của việc ghi âm này là để thực hiện 1 đồ án nghiên cứu: giọng nói của những người bị bệnh Parkinson 
+         sẽ được đối chiếu với giọng nói của những người không bị bệnh Parkinson, từ đó giúp phát hiện ra bệnh Parkinson từ giai đoạn sớm.
+         """)
 st.markdown("THÔNG TIN CÁ NHÂN:")
 
 col1, col2 = st.columns([1, 2])
