@@ -84,40 +84,38 @@ col1, col2 = st.columns([1, 2])
 with col1:
     st.write("Họ tên:")
 with col2:
-    name = st.text_input("Họ tên", key="name_input", label_visibility="collapsed")
+    name = st.text_input("name_input", key="name_input", label_visibility="collapsed")
 
 col7, col8 = st.columns([1, 2])
 with col7:
     st.write("Giới tính:")
 with col8:
-    gender = st.radio("Giới tính", ['Nam', 'Nữ'], label_visibility="collapsed")
+    gender = st.radio("gender_input", ['Nam', 'Nữ'], key="gender_input", label_visibility="collapsed")
 
 col3, col4 = st.columns([1, 2])
 with col3:
     st.write("Năm sinh:")
 with col4:
-    year_of_birth = st.number_input("Năm sinh", value=1960, min_value=1900, max_value=2025, step=1, key="yob", label_visibility="collapsed")
+    year_of_birth = st.number_input("yob_input", value=1960, min_value=1900, max_value=2025, step=1, key="yob_input", label_visibility="collapsed")
 
 col5, col6 = st.columns([1, 2])
 with col5:
     st.write("Số năm bị bệnh Parkinson:")
 with col6:
-    years_parkinson = st.number_input("Số năm mắc bệnh Parkinson", min_value=1, step=1, key="yod", label_visibility="collapsed")
+    years_parkinson = st.number_input("yod_input", min_value=1, step=1, key="yod_input", label_visibility="collapsed")
 st.markdown("---")
 st.markdown("NỘI DUNG GHI ÂM:")
-st.write("1. Phát âm nguyên âm “A” dài và lâu nhất có thể (lần 1)")
+st.write("1. Hít nhẹ và phát âm nguyên âm “A” thật to, dài và lâu nhất có thể, vd Aaaa..., chú ý không thêm dấu vào như Áááá... (lần 1)")
 audio1 = audiorecorder("Ghi âm", "Ngừng ghi âm", custom_style={"backgroundColor": "lightblue"}, key="ghiam1")
 if len(audio1) > 0:
     save_ggdrive(audio1, name, gender, year_of_birth, years_parkinson)
-st.write("2. Phát âm nguyên âm “A” dài và lâu nhất có thể (lần 2)")
+st.write("2. Nghỉ 1 chút, hít nhẹ và phát âm nguyên âm “A” thật to, dài và lâu nhất có thể, vd Aaaa..., chú ý không thêm dấu vào như Áááá... (lần 2)")
 audio2 = audiorecorder("Ghi âm", "Ngừng ghi âm", custom_style={"backgroundColor": "lightblue"}, key="ghiam2")
 if len(audio2) > 0:
     save_ggdrive(audio2, name, gender, year_of_birth, years_parkinson)
-st.write("3. Phát âm nguyên âm “A” dài và lâu nhất có thể (lần 3)")
+st.write("3. Nhỉ 1 chút nữa, hít nhẹ và phát âm nguyên âm “A” thật to, dài và lâu nhất có thể, vd Aaaa..., chú ý không thêm dấu vào như Áááá... (lần 3)")
 audio3 = audiorecorder("Ghi âm", "Ngừng ghi âm", custom_style={"backgroundColor": "lightblue"}, key="ghiam3")
 if len(audio3) > 0:
     save_ggdrive(audio3, name, gender, year_of_birth, years_parkinson)
-st.write("")
 st.markdown("---")
-st.write("")
 st.write("Lời cảm ơn: Xin cảm ơn ông/bà cô/chú anh/chị Cộng Đồng PARKINTON VIỆT NAM, đặc biệt là anh admin Tung Mix vì đã hỗ trợ em thực hiện đồ án này!")
