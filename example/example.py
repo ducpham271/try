@@ -50,6 +50,7 @@ st.markdown(
         #MainMenu {visibility: hidden;}
         footer {visibility: hidden;}
         header {visibility: hidden;}
+        .st-emotion-cache-1v0mbdj.e115fcil1 {display: none;}  /* Streamlit Cloud profile footer */
         h1 {
             font-size: 24px;  /* Adjust the size here */
         }
