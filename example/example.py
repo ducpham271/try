@@ -111,7 +111,7 @@ col9, col10 = st.columns([1, 2])
 with col9:
     st.write("Trạng thái:")
 with col10:
-    state = st.radio("state_input", ['ON', 'OFF'], value='OFF', key="statue_input", label_visibility="collapsed")
+    state = st.radio("state_input", ['ON', 'OFF'], index=1, key="statue_input", label_visibility="collapsed")
 
 st.markdown("---")
 st.markdown("NỘI DUNG GHI ÂM:")
