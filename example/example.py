@@ -130,7 +130,7 @@ st.write("2. Nghỉ 1 chút, hít nhẹ và phát âm nguyên âm “A” thật
 audio2 = audiorecorder("Ghi âm", "Ngừng ghi âm", custom_style={"backgroundColor": "lightblue"}, key="ghiam2")
 if len(audio2) > 0:
     save_ggdrive(audio2, name, gender, year_of_birth, years_parkinson, state)
-st.write("3. Nhỉ 1 chút nữa, hít nhẹ và phát âm nguyên âm “A” thật to, đều, dài và lâu nhất có thể, vd Aaaa..., chú ý không thêm dấu vào như Áááá... (lần 3)")
+st.write("3. Nghỉ 1 chút nữa, hít nhẹ và phát âm nguyên âm “A” thật to, đều, dài và lâu nhất có thể, vd Aaaa..., chú ý không thêm dấu vào như Áááá... (lần 3)")
 audio3 = audiorecorder("Ghi âm", "Ngừng ghi âm", custom_style={"backgroundColor": "lightblue"}, key="ghiam3")
 if len(audio3) > 0:
     save_ggdrive(audio3, name, gender, year_of_birth, years_parkinson, state)
