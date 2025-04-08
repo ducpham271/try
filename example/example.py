@@ -16,7 +16,7 @@ drive_folder_id = st.secrets["DRIVE_FOLDER_ID"]  # Get from Streamlit secrets
 service = build('drive', 'v3', credentials=creds)
 vietnam_timezone = pytz.timezone('Asia/Ho_Chi_Minh')
 
-def save_ggdrive(audio, _name, _gender, _year_of_birth, _years_parkinson):
+def save_ggdrive(audio, _name, _gender, _year_of_birth, _years_parkinson, _state):
     st.audio(audio.export().read())
     
     utc_now = datetime.datetime.now().replace(tzinfo=pytz.utc)
@@ -25,7 +25,7 @@ def save_ggdrive(audio, _name, _gender, _year_of_birth, _years_parkinson):
     __gender = _gender
     if unicodedata.normalize("NFC", _gender) == "Nữ":
         __gender = "Nu"
-    filename = f"{_name}_{__gender}_{_year_of_birth}_{_years_parkinson}_{timestamp}_a.wav"
+    filename = f"{_name}_{__gender}_{_year_of_birth}_{_years_parkinson}_{_state}_{timestamp}_a.wav"
 
     audio.export(filename, format="wav")
     print(filename)
@@ -106,6 +106,13 @@ with col5:
     st.write("Số năm bị bệnh Parkinson:")
 with col6:
     years_parkinson = st.number_input("yod_input", min_value=1, step=1, key="yod_input", label_visibility="collapsed")
+
+col9, col10 = st.columns([1, 2])
+with col9:
+    st.write("Trạng thái:")
+with col10:
+    state = st.radio("state_input", ['ON', 'OFF'], value='OFF', key="statue_input", label_visibility="collapsed")
+
 st.markdown("---")
 st.markdown("NỘI DUNG GHI ÂM:")
 st.write("Mẫu ghi âm như sau (phát âm nguyên âm “A” thật to, dài và lâu nhất có thể, vd Aaaa..., chú ý không thêm dấu vào như Áááá...):")
@@ -116,14 +123,14 @@ st.audio(audio_file, format='audio/wav')
 st.write("1. Hít nhẹ và phát âm nguyên âm “A” thật to, dài và lâu nhất có thể, vd Aaaa..., chú ý không thêm dấu vào như Áááá... (lần 1)")
 audio1 = audiorecorder("Ghi âm", "Ngừng ghi âm", custom_style={"backgroundColor": "lightblue"}, key="ghiam1")
 if len(audio1) > 0:
-    save_ggdrive(audio1, name, gender, year_of_birth, years_parkinson)
+    save_ggdrive(audio1, name, gender, year_of_birth, years_parkinson, state)
 st.write("2. Nghỉ 1 chút, hít nhẹ và phát âm nguyên âm “A” thật to, dài và lâu nhất có thể, vd Aaaa..., chú ý không thêm dấu vào như Áááá... (lần 2)")
 audio2 = audiorecorder("Ghi âm", "Ngừng ghi âm", custom_style={"backgroundColor": "lightblue"}, key="ghiam2")
 if len(audio2) > 0:
-    save_ggdrive(audio2, name, gender, year_of_birth, years_parkinson)
+    save_ggdrive(audio2, name, gender, year_of_birth, years_parkinson, state)
 st.write("3. Nhỉ 1 chút nữa, hít nhẹ và phát âm nguyên âm “A” thật to, dài và lâu nhất có thể, vd Aaaa..., chú ý không thêm dấu vào như Áááá... (lần 3)")
 audio3 = audiorecorder("Ghi âm", "Ngừng ghi âm", custom_style={"backgroundColor": "lightblue"}, key="ghiam3")
 if len(audio3) > 0:
-    save_ggdrive(audio3, name, gender, year_of_birth, years_parkinson)
+    save_ggdrive(audio3, name, gender, year_of_birth, years_parkinson, state)
 st.markdown("---")
 st.write("Lời cảm ơn: Xin cảm ơn ông/bà cô/chú anh/chị Cộng Đồng PARKINTON VIỆT NAM, đặc biệt là anh admin Tung Mix vì đã hỗ trợ em thực hiện đồ án này!")
