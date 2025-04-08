@@ -115,20 +115,22 @@ with col10:
 
 st.markdown("---")
 st.markdown("NỘI DUNG GHI ÂM:")
-st.write("Mẫu ghi âm như sau (phát âm nguyên âm “A” thật to, dài và lâu nhất có thể, vd Aaaa..., chú ý không thêm dấu vào như Áááá...):")
-# Mở file âm thanh
-audio_file = open('Aaaa_sample.wav', 'rb')
-# Hiển thị audio player
-st.audio(audio_file, format='audio/wav')
-st.write("1. Hít nhẹ và phát âm nguyên âm “A” thật to, dài và lâu nhất có thể, vd Aaaa..., chú ý không thêm dấu vào như Áááá... (lần 1)")
+
+# st.write("Mẫu ghi âm như sau (phát âm nguyên âm “A” thật to, dài và lâu nhất có thể, vd Aaaa..., chú ý không thêm dấu vào như Áááá...):")
+# # Mở file âm thanh
+# audio_file = open('Aaaa_sample.wav', 'rb')
+# # Hiển thị audio player
+# st.audio(audio_file, format='audio/wav')
+
+st.write("1. Hít nhẹ và phát âm nguyên âm “A” thật to, đều, dài và lâu nhất có thể, vd Aaaa..., chú ý không thêm dấu vào như Áááá... (lần 1)")
 audio1 = audiorecorder("Ghi âm", "Ngừng ghi âm", custom_style={"backgroundColor": "lightblue"}, key="ghiam1")
 if len(audio1) > 0:
     save_ggdrive(audio1, name, gender, year_of_birth, years_parkinson, state)
-st.write("2. Nghỉ 1 chút, hít nhẹ và phát âm nguyên âm “A” thật to, dài và lâu nhất có thể, vd Aaaa..., chú ý không thêm dấu vào như Áááá... (lần 2)")
+st.write("2. Nghỉ 1 chút, hít nhẹ và phát âm nguyên âm “A” thật to, đều, dài và lâu nhất có thể, vd Aaaa..., chú ý không thêm dấu vào như Áááá... (lần 2)")
 audio2 = audiorecorder("Ghi âm", "Ngừng ghi âm", custom_style={"backgroundColor": "lightblue"}, key="ghiam2")
 if len(audio2) > 0:
     save_ggdrive(audio2, name, gender, year_of_birth, years_parkinson, state)
-st.write("3. Nhỉ 1 chút nữa, hít nhẹ và phát âm nguyên âm “A” thật to, dài và lâu nhất có thể, vd Aaaa..., chú ý không thêm dấu vào như Áááá... (lần 3)")
+st.write("3. Nhỉ 1 chút nữa, hít nhẹ và phát âm nguyên âm “A” thật to, đều, dài và lâu nhất có thể, vd Aaaa..., chú ý không thêm dấu vào như Áááá... (lần 3)")
 audio3 = audiorecorder("Ghi âm", "Ngừng ghi âm", custom_style={"backgroundColor": "lightblue"}, key="ghiam3")
 if len(audio3) > 0:
     save_ggdrive(audio3, name, gender, year_of_birth, years_parkinson, state)
