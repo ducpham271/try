@@ -72,7 +72,7 @@ st.markdown(
 )
 
 logo = Image.open("logo_new.png")
-col1a, col2a = st.columns([2, 3])  # Điều chỉnh tỷ lệ cột tùy ý
+col1a, col2a = st.columns([2, 4])  # Điều chỉnh tỷ lệ cột tùy ý
 with col1a:
     st.image(logo, width=300)
 with col2a:
